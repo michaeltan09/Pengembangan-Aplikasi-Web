@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengembangan Aplikasi Web Latihan 2.3</title>
+</head>
+<body>
+    <div id="output">
+        <h1 id="judul">Indeks Nilai</h1>
+        <p>Silahkan masukkan Nilai : </p> <input type="number" min="0" id="nilai">
+        <p>Nilai : <span id="indeks"></span></p>
+        <button onclick="cekNilai()">Tampilkan Indeks</button>
+    </div>
+    <script type="text/javascript">
+        function cekNilai() {
+            var nilai = Number(document.getElementById('nilai').value);
+            if(nilai >= 85 && nilai <= 100){
+                document.getElementById('indeks').innerHTML = "A";
+            }else if(nilai >= 80 && nilai <= 85){
+                document.getElementById('indeks').innerHTML = "A-";
+            }else if(nilai >= 75 && nilai <= 80){
+                document.getElementById('indeks').innerHTML = "B+";
+            }else if(nilai >= 70 && nilai <= 75){
+                document.getElementById('indeks').innerHTML = "B";
+            }else if(nilai >= 65 && nilai <= 70){
+                document.getElementById('indeks').innerHTML = "B-";
+            }else if(nilai >= 60 && nilai <= 65){
+                document.getElementById('indeks').innerHTML = "C";
+            }else if(nilai > 50 && nilai <= 60){
+                document.getElementById('indeks').innerHTML = "D";
+            }else if(nilai <= 50){
+                document.getElementById('indeks').innerHTML = "E";
+            }else{
+                document.getElementById('indeks').innerHTML = "Tidak terdefinisi";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengembangan Aplikasi Web Latihan 2.2</title>
+</head>
+<body>
+    <div id="output">
+        <h1 id="judul">Pendaftaran SIM C</h1>
+        <p>Silahkan masukkan nama anda : </p> <input type="text" id="nama">
+        <p>Silahkan masukkan umur anda : </p> <input type="number" min="5" id="umur">
+
+        <button onclick="cekUmur()">Daftar</button>
+
+        <script type="text/javascript">
+            function cekUmur() {
+                var umur = Number(document.getElementById('umur').value);
+                if (umur>16){
+                    alert('Selamat, Anda dapat melakukan pendaftaran');
+                }else{
+                    alert('Maaf, Umur anda belum 17 tahun.');
+                }
+                
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengembangan Aplikasi Web Latihan 1.5</title>
+</head>
+<body>
+    <div>Input Nilai 1 : <input type="number" id="nilai1" /></div>
+    <div>Input Nilai 2 : <input type="number" id="nilai2" /></div>
+    Hasil :
+    <div style="margin-top:10px; font-size: 16px; font-weight: bold;" id="output">
+    
+    </div>
+    <br />
+    <div>
+        <button onclick="tambah()">+</button>
+        <button onclick="kurang()">-</button>
+        <button onclick="kali()">*</button>
+        <button onclick="bagi()">/</button>
+        <button onclick="genap()">Genap</button>
+    </div>
+
+    <script type="text/javascript">
+     function tambah(){
+         var nilai1 = Number(document.getElementById('nilai1').value)
+         var nilai2 = Number(document.getElementById('nilai2').value)
+         var hasil = nilai1 + nilai2
+         document.getElementById('output').innerHTML = hasil
+     }
+      function kurang(){
+          var nilai1 = Number(document.getElementById('nilai1').value)
+          var nilai2 = Number(document.getElementById('nilai2').value)
+          var hasil = nilai1 - nilai2
+          document.getElementById('output').innerHTML = hasil
+      }
+      function kali(){
+          var nilai1 = Number(document.getElementById('nilai1').value)
+          var nilai2 = Number(document.getElementById('nilai2').value)
+          var hasil = nilai1 * nilai2
+          document.getElementById('output').innerHTML = hasil
+      }
+      function bagi(){
+          var nilai1 = Number(document.getElementById('nilai1').value)
+          var nilai2 = Number(document.getElementById('nilai2').value)
+          var hasil = nilai1 / nilai2
+          document.getElementById('output').innerHTML = hasil
+      }
+      function genap(){
+          var nilai1 = Number(document.getElementById('nilai1').value)
+          var nilai2 = Number(document.getElementById('nilai2').value)
+          var hasil1 = nilai1%2==0
+          var hasil2 = nilai2%2==0
+          document.getElementById('output').innerHTML =  nilai1 + ' bilangan genap? ' + hasil1 + '<br>'
+			  + nilai2 + ' bilangan genap? ' +hasil2 
+      }
+    </script>
+</body>
+</html>
