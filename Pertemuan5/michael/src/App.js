@@ -1,45 +1,96 @@
-import React, { Component } from 'react';
-import './css/bootstrap.min.css'
+import React, {Component} from 'react';
+import './css/bootstrap.min.css';
 import './App.css';
 import logo from './logo.svg';
 import Home from './views/Home/Home';
+import About from './views/About/About';
+import Main from './Main';
+import Help from './views/Help/Help';
 
-//PROPS
+class App extends Component{
+  constructor(){
+    super();
+    //inisial state view
+    this.state = {
+      view : "home"
+    }
+  }
+  render(){
+    //Functional component View untuk mengatur component yang tampil
+    const View = ()=>{
+      if(this.state.view == 'home')
+        return <Main />
+      else if(this.state.view == 'about')
+        return <About />
+      else if(this.state.view == 'help')
+        return <Help />
+    }
+
+    return(
+      <div>
+        <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a onClick={()=> this.setState({view : 'home'})} className="nav-link" href="#">
+                Home
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a onClick={()=> this.setState({view : 'about'})} className="nav-link" href="#">
+                About
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a onClick={()=> this.setState({view : 'help'})} className="nav-link" href="#">
+                Help
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <View /> {/* panggil component View */}
+      </div>
+    );
+  }
+}
+
+//Props
 // function Message(props){
 //   return <p>Hello {props.name},</p>;
 // }
 
 // class App extends Component{
-
 //   render(){
 //     return(
 //       <div>
 //         <Message name="Ulrich" />
-//         <Home name="Muhammad Salah" />
+//         <Home name="Eden Hazard" />
 //       </div>
-//     )
+//     );
 //   }
 // }
 
-//CLASS COMPONENT
+//Class Component
 // function Message(){
 //   return "Pesan didalam Component";
 // }
 
-// class App extends Component {
-
-// render(){
-//   return(
-//     <div>
-//       <Message />
-//       <Home />
-//     </div>
-//   )
+// class App extends Component{
+//   render(){
+//     return(
+//       <div>
+//         <Message />
+//         <Home />
+//       </div>
+//     );
+//   }
 // }
 
 //FUNCTIONAL COMPONENTS
-// function Message() {
-//   return <p>Hello from message component</p>
+// function Message(){
+//   return <p>Hello from Message component</p>
 // }
 
 // class App extends Component{
@@ -48,18 +99,19 @@ import Home from './views/Home/Home';
 //       <div>
 //         <Message />
 //       </div>
-//     )
+//     );
 //   }
 // }
 
 //FUNCTION
-// function sayHello() {
-//   return "Hello World";
+// function sayHello(){
+//   return "Hello World"
 // }
 
-// class App extends Component {
-//   bilangHalo(){ 
-//   return "Halo Dunia";
+// class App extends Component{
+  
+//   bilangHalo(){
+//     return "Halo Dunia"
 //   }
 
 //   render(){
@@ -72,5 +124,4 @@ import Home from './views/Home/Home';
 //   }
 // }
 
-  export default App;
-  
+export default App;

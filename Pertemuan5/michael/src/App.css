@@ -36,20 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.content {
-  width: 80%;
-  margin:auto;
-}
-
-.title {
-  text-align: center;
-  color: rgb(197,165,197);
-  font-size: 18px;
-}
-
-.content-text {
-  padding:20px;
-  font-size: 14px;
-  color : #888;
-}
