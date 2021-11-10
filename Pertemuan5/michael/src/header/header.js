@@ -1,25 +1,31 @@
-import React from "react";
+import React, { Component } from 'react';
+import './css/bootstrap.min.css';
 
-const title = () => {
-  return (
-    <h2
-      style={{
-        width: "550px",
-        margin: "auto",
-        marginTop: "10px",
-        textAlign: "center",
-        color: "#4d90fe",
-      }}
-    >
-      Sistem Informasi E-biz
-    </h2>
-  );
-};
-
-class Header extends React.Component {
-  render() {
-    return <div>{title()}</div>;
+class Header extends Component {
+  render(){
+    return (
+      <div>
+          <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a onClick={()=> this.props.getValue('home')} className="nav-link" href="#">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a onClick={()=> this.props.getValue('about')} className="nav-link" href="#">
+                  About
+                </a>
+              </li>
+              <li className="nav-item">
+                <a onClick={()=> this.props.getValue('help')} className="nav-link" href="#">
+                  Help
+                </a>
+              </li>
+            </ul>
+          </nav>
+      </div>
+    );
   }
 }
-
 export default Header;
