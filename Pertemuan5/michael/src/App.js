@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import './css/bootstrap.min.css';
 import './App.css';
-import logo from './logo.svg';
 import Home from './views/Home/Home';
 import About from './views/About/About';
 import Main from './Main';
 import Help from './views/Help/Help';
+import Header from './header/header';
 
 class App extends Component{
   constructor(){
