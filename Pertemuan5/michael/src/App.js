@@ -24,7 +24,7 @@ class App extends Component{
     }
   }
   render(){
-    const loginButton = withRouter(({history}) =>( 
+    const LoginButton = withRouter(({history}) =>( 
     <button onClick={()=>{
       this.setState({isAuth :true})
       history.push('/profile')
@@ -36,6 +36,22 @@ class App extends Component{
       history.push('/login')
     }}>Logout</button>
     ))
+    const routes = [{
+      path : '/',
+      exact : true,
+      render : ()=> <div>Ini Halaman Home</div>
+    },{
+      path : '/news',
+      render : ()=> <div>Ini Halaman News</div>
+    },{
+      path : '/login',
+      render : ()=> <div>Ini Halaman Login</div>
+    },{
+      path : '/profile',
+      render : ()=> this.state.isAuth ? <div>Ini Halaman Profile<br /><LogoutButton/></div> : <Redirect to ='/login' />
+    }
+    ]
+
     return(
       <Router>
         <div>
@@ -46,10 +62,11 @@ class App extends Component{
           </ul>
 
           <Switch>
-            <Route path='/' exact render={()=><div>Ini adalah halaman Home</div>} />
-            <Route path='/news' exact render={()=><div>Ini adalah halaman News</div>} />
-            <Route path='/login' render={()=><div><button><LoginButton /></button></div>} />
-            <Route path='/profile' render={()=> this.state.isAuth ? <div>Ini adalah halaman Profile<br /><LogoutButton /></div> : <Redirect to='/login'/>} />
+          {
+              routes.map((item, index)=>(
+                <Route path={item.path} exact={item.exact} render={item.render} />
+              ))
+            }
           </Switch>
         </div>
       </Router>
