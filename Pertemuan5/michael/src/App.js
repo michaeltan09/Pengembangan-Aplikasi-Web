@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import{
-  BrowserRouter as Router,
-  Route,
-  Link, Switch, 
-  withRouter,
-  Redirect
-} from "react-router-dom";
+// import{
+//   BrowserRouter as Router,
+//   Route,
+//   Link, Switch, 
+//   withRouter,
+//   Redirect
+// } from "react-router-dom";
 // import './css/bootstrap.min.css';
 // import './App.css';
 // import Home from './views/Home/Home';
@@ -14,65 +14,97 @@ import{
 // import Help from './views/Help/Help';
 // import Header from './header/header';
 
-
-//ROUTER RENDER DAN REDIRECT
-class App extends Component{
+class App extends Component {
   constructor(){
-    super()
-    this.state = {
-      isAuth : false
-    }
+    super();
+    this.myRef = React.createRef();
   }
+
+  componentDidMount(){
+    this.myRef.current.style.height = '100vh';
+    this.myRef.current.style.weidth = '100%'
+  }
+  setBackground(bgColor,txtColor){
+    this.myRef.current.style.background = bgColor;
+    this.myRef.current.style.color = txtColor;
+  }
+
   render(){
-    const LoginButton = withRouter(({history}) =>( 
-    <button onClick={()=>{
-      this.setState({isAuth :true})
-      history.push('/profile')
-    }}>Login</button>
-    ))
-
-    const LogoutButton = withRouter(({history})=>(<button onClick={()=>{
-      this.setState({isAuth : false })
-      history.push('/login')
-    }}>Logout</button>
-    ))
-    const routes = [{
-      path : '/',
-      exact : true,
-      render : ()=> <div>Ini Halaman Home</div>
-    },{
-      path : '/news',
-      render : ()=> <div>Ini Halaman News</div>
-    },{
-      path : '/login',
-      render : ()=> <div>Ini Halaman Login</div>
-    },{
-      path : '/profile',
-      render : ()=> this.state.isAuth ? <div>Ini Halaman Profile<br /><LogoutButton/></div> : <Redirect to ='/login' />
-    }
-    ]
-
     return(
-      <Router>
-        <div>
-          <ul style={{listStyle: 'none'}}>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/news'>News</Link></li>
-            <li><Link to='/profile'>Profile</Link></li>
-          </ul>
-
-          <Switch>
-          {
-              routes.map((item, index)=>(
-                <Route path={item.path} exact={item.exact} render={item.render} />
-              ))
-            }
-          </Switch>
-        </div>
-      </Router>
+      <div ref={this.myRef}>
+        <p>Belajar pengembangan aplikasi web dengan Reactjs dengan Router dan Refs</p>
+        <button onClick={this.setBackground.bind(this,'white','black')}>White</button>
+        <button onClick={this.setBackground.bind(this,'red','black')}>Red</button>
+        <button onClick={this.setBackground.bind(this,'green','white')}>Green</button>
+        <button onClick={this.setBackground.bind(this,'blue','white')}>Blue</button>
+      </div>
+      
     )
   }
 }
+
+
+
+
+
+//ROUTER RENDER DAN REDIRECT
+// class App extends Component{
+//   constructor(){
+//     super()
+//     this.state = {
+//       isAuth : false
+//     }
+//   }
+//   render(){
+//     const LoginButton = withRouter(({history}) =>( 
+//     <button onClick={()=>{
+//       this.setState({isAuth :true})
+//       history.push('/profile')
+//     }}>Login</button>
+//     ))
+
+//     const LogoutButton = withRouter(({history})=>(<button onClick={()=>{
+//       this.setState({isAuth : false })
+//       history.push('/login')
+//     }}>Logout</button>
+//     ))
+//     const routes = [{
+//       path : '/',
+//       exact : true,
+//       render : ()=> <div>Ini Halaman Home</div>
+//     },{
+//       path : '/news',
+//       render : ()=> <div>Ini Halaman News</div>
+//     },{
+//       path : '/login',
+//       render : ()=> <div>Ini Halaman Login</div>
+//     },{
+//       path : '/profile',
+//       render : ()=> this.state.isAuth ? <div>Ini Halaman Profile<br /><LogoutButton/></div> : <Redirect to ='/login' />
+//     }
+//     ]
+
+//     return(
+//       <Router>
+//         <div>
+//           <ul style={{listStyle: 'none'}}>
+//             <li><Link to='/'>Home</Link></li>
+//             <li><Link to='/news'>News</Link></li>
+//             <li><Link to='/profile'>Profile</Link></li>
+//           </ul>
+
+//           <Switch>
+//           {
+//               routes.map((item, index)=>(
+//                 <Route path={item.path} exact={item.exact} render={item.render} />
+//               ))
+//             }
+//           </Switch>
+//         </div>
+//       </Router>
+//     )
+//   }
+// }
 
 
 // class App extends Component{
