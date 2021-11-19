@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-// import{
-//   BrowserRouter as Router,
-//   Route,
-//   Link, Switch, 
-//   withRouter,
-//   Redirect
-// } from "react-router-dom";
-// import './css/bootstrap.min.css';
+import Foto from "./components/Image/Michael.jpg";
+import{
+BrowserRouter as Router,
+Route,
+NavLink, Switch, 
+withRouter,
+Redirect,
+} from "react-router-dom";
+import './css/bootstrap.min.css';
 // import './App.css';
 // import Home from './views/Home/Home';
 // import About from './views/About/About';
@@ -14,38 +15,249 @@ import React, {Component} from 'react';
 // import Help from './views/Help/Help';
 // import Header from './header/header';
 
-class App extends Component {
-  constructor(){
-    super();
-    this.myRef = React.createRef();
+
+//TUGAS PERTEMUAN6
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isAuth: false,
+    };
   }
 
-  componentDidMount(){
-    this.myRef.current.style.height = '100vh';
-    this.myRef.current.style.weidth = '100%'
-  }
-  setBackground(bgColor,txtColor){
-    this.myRef.current.style.background = bgColor;
-    this.myRef.current.style.color = txtColor;
-  }
-
-  render(){
-    return(
-      <div ref={this.myRef}>
-        <p>Belajar pengembangan aplikasi web dengan Reactjs dengan Router dan Refs</p>
-        <button onClick={this.setBackground.bind(this,'white','black')}>White</button>
-        <button onClick={this.setBackground.bind(this,'red','black')}>Red</button>
-        <button onClick={this.setBackground.bind(this,'green','white')}>Green</button>
-        <button onClick={this.setBackground.bind(this,'blue','white')}>Blue</button>
-      </div>
-      
-    )
+  render() {
+    const LoginButton = withRouter(({ history }) => (
+      <button
+        className='btn btn-primary'
+        onClick={() => {
+          this.setState({ isAuth: true });
+          history.push("/profile");
+        }}>
+        Login
+      </button>
+    ));
+    const LogoutButton = withRouter(({ history }) => (
+      <button
+        className='btn btn-secondary'
+        onClick={() => {
+          this.setState({ isAuth: false });
+          history.push("/login");
+        }}>
+        Logout
+      </button>
+    ));
+    const routes = [
+      {
+        path: "/",
+        exact: true,
+        render: () => (
+          <div>Ini adalah Tampilan menu Home.</div>
+        ),
+      },
+      {
+        path: "/login",
+        render: () => (
+          <div className='container text-center'>
+            <h2>Login terlebih dahulu sebelum akses menu profile.</h2>
+            <table className='table table-borderless text-start'>
+              <tbody>
+                <tr>
+                  <td>Username</td>
+                  <td>:</td>
+                  <td>
+                    <input
+                      className='border border-primary w-50'
+                      type='text'
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Password</td>
+                  <td>:</td>
+                  <td>
+                    <input
+                      className='border border-primary w-50'
+                      type='text'
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <LoginButton />
+                  </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        ),
+      },
+      {
+        path: "/profile",
+        render: () =>
+          this.state.isAuth ? (
+            <div className='container text-center'>
+              <h2 className='fw-bold'>Profile Mahasiswa</h2>
+              <table className='table table-borderless text-start'>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <img src={Foto} className='w-25 h-10 border border-3' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>NIM</td>
+                    <td>:</td>
+                    <td>192110053</td>
+                  </tr>
+                  <tr>
+                    <td>Nama</td>
+                    <td>:</td>
+                    <td>Michael</td>
+                  </tr>
+                  <tr>
+                    <td>Program Studi</td>
+                    <td>:</td>
+                    <td>Sistem Informasi</td>
+                  </tr>
+                  <tr>
+                    <td>Peminatan</td>
+                    <td>:</td>
+                    <td>E-Bisnis</td>
+                  </tr>
+                  <tr>
+                    <td>Dosen Wali</td>
+                    <td>:</td>
+                    <td>Angela, S.Kom., M.MSI.</td>
+                  </tr>
+                  <tr>
+                    <td>Agama</td>
+                    <td>:</td>
+                    <td>Buddha</td>
+                  </tr>
+                  <tr>
+                    <td>Jenis Kelamin</td>
+                    <td>:</td>
+                    <td>Laki-Laki</td>
+                  </tr>
+                  <tr>
+                    <td>Tempat, Tempat Lahir</td>
+                    <td>:</td>
+                    <td>Kisaran, 07 September 2001</td>
+                  </tr>
+                  <tr>
+                    <td>Status Mahasiswa</td>
+                    <td>:</td>
+                    <td>Aktif</td>
+                  </tr>
+                  <tr>
+                    <td>Status Akademis</td>
+                    <td>:</td>
+                    <td>Aktif</td>
+                  </tr>
+                  <tr>
+                    <td>Status MPT</td>
+                    <td>:</td>
+                    <td>Lulus</td>
+                  </tr>
+                  <tr>
+                    <td>Status Vaksinasi</td>
+                    <td>:</td>
+                    <td>Telah Vaksinasi Kedua</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <LogoutButton />
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br />
+            </div>
+          ) : (
+            <Redirect to='/login' />
+          ),
+      },
+    ];
+    return (
+      <Router>
+        <div className='container'>
+          <nav className='navbar navbar-expand-md navbar navbar-primary bg-primary'>
+            <div className='container'>
+              <div className='collapse navbar-collapse' id='navbarNavDropdown'>
+                <ul className='navbar-nav'>
+                  <li className='nav-item'>
+                    <NavLink exact className='nav-link text-light' to='/'>
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className='nav-item'>
+                    <NavLink
+                      to='/profile'
+                      className='nav-link text-light'
+                      activeClassName='active'>
+                      Login
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <Switch>
+            {routes.map((item, index) => (
+              <Route path={item.path} exact={item.exact} render={item.render} />
+            ))}
+          </Switch>
+        </div>
+      </Router>
+    );
   }
 }
 
+//VIDCON PERTEMUAN6
+// class App extends Component {
+//   constructor(){
+//     super();
+//     this.myRef = React.createRef();
+//   }
 
+//   componentDidMount(){
+//     this.myRef.current.style.height = '100vh';
+//     this.myRef.current.style.weidth = '100%'
+//   }
+//   setBackground(bgColor,txtColor){
+//     this.myRef.current.style.background = bgColor;
+//     this.myRef.current.style.color = txtColor;
+//   }
 
-
+//   render(){
+//     return(
+//       <div ref={this.myRef}>
+//         <p>Belajar pengembangan aplikasi web dengan Reactjs dengan Router dan Refs</p>
+//         <button onClick={this.setBackground.bind(this,'white','black')}>White</button>
+//         <button onClick={this.setBackground.bind(this,'red','black')}>Red</button>
+//         <button onClick={this.setBackground.bind(this,'green','white')}>Green</button>
+//         <button onClick={this.setBackground.bind(this,'blue','white')}>Blue</button>
+//       </div>
+      
+//     )
+//   }
+// }
 
 //ROUTER RENDER DAN REDIRECT
 // class App extends Component{
